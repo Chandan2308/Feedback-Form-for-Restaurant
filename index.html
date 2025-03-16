@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title> Feedback Form </title>
+        <style>
+            *{
+                font-size: 50px;
+            }
+            body{
+                background-color: azure;
+            }
+            h1{
+                background-color: black; 
+                color: wheat;
+                width: 70%;
+            }
+            input[type=radio]{
+                height: 0.5em;
+                width: 2%;
+                margin-left: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1> Feedback Form for Restaurant </h1>
+            <form onsubmit="show()">
+                <input type="text" id="name" placeholder="Enter  Your Name " />
+                <br/> <br/>
+                <label> Select One </label>
+                <br/>
+                <input type="radio" name="f"    id="s" value="superb"/> Superb
+                <input type="radio" name="f"    id="o" value="ok"/> Ok
+                <input type="radio" name="f"    id="p" value="poor"/> Poor
+                <br/><br/>
+                <input type="submit" />
+            
+            </form>
+            <h2 id = "msg" ></h2>
+            <script>
+                function show(){
+                    event.preventDefault();
+
+                let name = document.getElementById("name");
+                let s = document.getElementById("s");
+                let o = document.getElementById("o");
+                let p = document.getElementById("p");
+                let msg = document.getElementById("msg");
+                
+                let n = name.value;
+                
+                if(n.trim() === ""){
+                    alert("Please Enter Name: ");
+                    name.value = "";
+                    msg.innerHTML = "";
+                    name.focus();
+                    return;
+                }
+                if(! n.match(/^[A-Za-z ]+$/)){
+                    alert("Name Should contain only Alphabets:- ");
+                    name.value = "";
+                    msg.innerHTML = "";
+                    name.focus();
+                    return;
+                }
+                
+                let feedback = "";
+                if(s.checked)
+                feedback = "Superb";
+            else if(o.checked)
+            feedback = "Ok";
+        else
+        feedback = "Poor";
+    
+    msg.innerHTML = "Name : "+n+" \nFeedback = "+feedback;
+    
+}
+</script>
+</center>
+    </body>
+</html>
